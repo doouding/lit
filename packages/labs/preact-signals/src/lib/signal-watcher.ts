@@ -27,7 +27,7 @@ export function SignalWatcher<T extends ReactiveElementConstructor>(
       // ReactiveElement.performUpdate() also does this check, so we want to
       // also bail early so we don't erroneously appear to not depend on any
       // signals.
-      if (this.isUpdatePending === false) {
+      if (this.isUpdatePending === false || this.isConnected === false) {
         return;
       }
       // If we have a previous effect, dispose it
